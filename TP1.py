@@ -27,6 +27,7 @@ train_data,means,stdevs = standardize(train_data);
 #Shuffle train_data
 np.random.shuffle(train_data)
 
+#Create and train a naiive bayes classifier
 nb = naiive_bayes.naiive_bayes_classifier(bandwidth=1.0);
 nb.fit(train_data)
 
@@ -34,11 +35,10 @@ nb.fit(train_data)
 test_data = np.loadtxt("TP1_test.tsv", delimiter='\t')
 test_data,_,_ = standardize(test_data, means=means, stdevs=stdevs)
 
-#print(predict(test_data[0,:-1]))
-
-#y_predicted = nb.predict(test_data[:,:-1])
 y_predicted = nb.predict(test_data)
 
 misclassified = sum(test_data[:,-1] != y_predicted)
+
+print(misclassified)
 
 
