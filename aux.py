@@ -34,22 +34,13 @@ np.random.shuffle(train_data)
  
 def calc_gamma(index):
     return (index+1)*0.2
-    #return (index+1)*0.005
 
-def calc_fold(gamma, X, Y, train_ix, test_ix):
+def calc_fold_svm(gamma, X, Y, train_ix, test_ix):
     """return classification error for train and test sets""" 
     clf = SVC(gamma=gamma, C=1.0)
     clf.fit(X[train_ix,:], Y[train_ix]) 
-    
     classifications = clf.predict(X)
-    
-    misclassified_train = sum(classifications[train_ix] != Y[train_ix])
-    misclassified_test = sum(classifications[test_ix] != Y[test_ix])
-    
-    error_perc_train = (float(misclassified_train)/(len(train_ix)))*100
-    error_perc_test = (float(misclassified_test)/(len(test_ix)))*100
-    
-    return (error_perc_train, error_perc_test)
+    return classifications
 
 best_index, errors = k_fold.cross_validate(10, train_data[:,:-1], train_data[:,-1], 30, calc_fold, param_fun=calc_gamma, stratified=True, log=True)
 

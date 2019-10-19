@@ -12,6 +12,11 @@ from sklearn.model_selection import KFold, StratifiedKFold
 def identity(parameter):
     return parameter
 
+def compute_error(classifications, Y):
+    misclassified = sum(classifications != Y)
+    error_perc = (float(misclassified)/(Y.shape[0]))*100
+    return error_perc
+
 def cross_validate(folds, X, Y, iterations, calc_fold, param_fun=identity, stratified=True, log=False):
     """
     """
@@ -32,9 +37,9 @@ def cross_validate(folds, X, Y, iterations, calc_fold, param_fun=identity, strat
         avg_train_error = avg_validation_error = 0
         
         for train_indexes,validation_indexes in kf.split(X,Y):
-            train_error,validation_error = calc_fold(parameter,X,Y,train_indexes,validation_indexes)
-            avg_train_error += train_error 
-            avg_validation_error += validation_error 
+            classifications = calc_fold(parameter,X,Y,train_indexes,validation_indexes)
+            avg_train_error += compute_error(classifications[train_indexes], Y[train_indexes])
+            avg_validation_error += compute_error(classifications[validation_indexes], Y[validation_indexes])
             
         avg_train_error = avg_train_error/folds
         avg_validation_error = avg_validation_error/folds
