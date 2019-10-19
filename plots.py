@@ -48,6 +48,6 @@ def plot_train_and_test_errors(X, Y1, Y2, best, file, y1_key=None, y2_key=None, 
     #plt.plot(X_r[Y_r<=0,0],X_r[Y_r<=0,1],'ob')
     #plt.plot(X_t[Y_t>0,0],X_t[Y_t>0,1],'xr',mew=2)
     #plt.plot(X_t[Y_t<=0,0],X_t[Y_t<=0,1],'xb',mew=2)
-    plt.show()
     plt.savefig(file, dpi=400)
+    plt.show()
     plt.close()

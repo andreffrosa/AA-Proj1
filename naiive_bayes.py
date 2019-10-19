@@ -43,7 +43,7 @@ class naiive_bayes_classifier:
             kde.fit(C1[:,feature].reshape(-1, 1))
             self.kdes_c1.append(kde)
             
-    def classify(self, X):
+    def predict(self, X):
         """
         """
         # Start with the prior probability
