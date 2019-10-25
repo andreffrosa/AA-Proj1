@@ -6,41 +6,75 @@ Attention:
 QUESTIONS:
 
 Q1: Considering the data provided, explain the need to standardize the attribute values.
-R1:
+R1: When analysing (non-standardized nor normalized) data, values with higher scales weight more in the analysis. 
+    Standardizing the values prevents this problem, since standardization converts the measured values of the variables 
+    (features) to similar scales, making them contribute equally to the analysis.
 
 
 Q2: Explain how you calculated the parameters for standardization and how you used them in the test set.
-R2:
+R2: Both the mean and standard deviation of each variable (feature) were estimated resorting to the training set. 
+    Afterwards, when standardizing the test set, the previously estimated values for the mean and standard deviation were used.
 
 
 Q3: Explain how you calculated the prior probability of an example belonging to a class (the probability before taking into account the attribute values ​​of the example) in your Naïve Bayes classifier implementation. You may include a relevant piece of your code if this helps you explain.
-R3:
+R3: The prior probability of an example belonging to a class was estimated as the ratio between the number of examples of that class and the number of examples of all classes.
 
 
 Q4: Explain how your Naïve Bayes classifier predicts the class to which a test example belongs. You may include a relevant piece of your code if this helps you explain.
-R4:
+R4: My classifier assigns to a given test example the class with the highest probability of it belonging to that class. This probability corresponds to the sum of the logarithm of the 
+    prior probability of that class plus the log of the conditional probability (likelihood) of that example being of that class. In its turn, since we assume that the feature values 
+    are conditionally independent (hence being naïve), the likelihood is computed as the sum of the logarithms of the probability of each feature given the class.
 
 
 Q5: Explain the effect of the bandwidth parameter on your classifier.
-R5:
+R5: The lower the bandwidth, the more the classifier overfits to the training data, commiting more mistakes.
 
 
 Q6: Explain what effect the gamma parameter has on the SVM classifier.
-R6:
+R6: The higher the gamma, the more the classifier overfits to the training data, commiting more mistakes.
 
 
 Q7: Explain how you determined the best bandwidth and gamma parameters for your classifier and the SVM classifier. You may include a relevant piece of your code if this helps you explain.
-R7:
+R7: The best parameters of each classifier were determined as the value that produced the lowest average validation error (the lowest estimation of the true error). 
+    This validation error was computed resorting to k-fold cross-validation on the training set, with K=5 (5 folds). The range of tested values was from 0.02 to 0.6 with a step of 0.02 (bandwidth) and from 0.2 to 6 with a step of 0.2 (gamma).
 
 
 Q8: Explain how you obtained the best hypothesis for each classifier after optimizing all parameters.
-R8:
+R8: The best hypothesis was obtained by fitting the classifier to all the training data (not reserving any examples for validation), with the best value found for the corresponding parameter.
 
 
 Q9: Show the best parameters, the estimate of the true error for each hypothesis you obtained (your classifier and the two provided by the library), the ranges in the expected number of errors given by the approximate normal test, the McNemar test values, and discuss what you can conclude from this.
-R9:
+R9: 
+Approximate Normal Test
+Classifier      Best parameter        test error %                    confidence interval
+Naiive Bayes    bandwidth=0.1         0.06655974338412189     (65.74804244571963, 100.25195755428037)
+Gaussian NB         -                 0.0946271050521251      (97.74133517328086, 138.25866482671913)
+SVM (gamma)      gamma=0.4            0.04490777866880513     (41.665823792833734, 70.33417620716627)
 
+Since the confidence interval for the expected number of errors of the Naïve Bayes and Gaussian NB classifiers intersect, 
+we cannot exclude the hypothesis that they have the same true error, even though the estimation of the true error was different.
+Regarding the SVM classifier, since its confidence interval does not intersect with either the other two classifiers, 
+we can exclude the hypothesis (with 95% confidence) that they have the same true error. 
+Since the confidence interval for the SVM classifier is much lower than the other two classifiers, i.e., 
+it has a lower expected true error, it is the best classifier (for this problem) of the 3.
+
+McNemar Test
+classifier1 vs classifier2 = value       ( perform_identically )
+Naiive Bayes vs Gaussian NB = 18.349206349206348  ( False )
+Naiive Bayes vs SVM (gamma) = 11.859649122807017  ( False )
+Gaussian NB vs SVM (gamma) = 36.48039215686274  ( False )
+
+Since all the values are greater thar 3.84, we can reject the hypothesis that the classiﬁers perform identically with 95% conﬁdence.
+
+Overall, the best classifier was SVM.
 
 Q10: (Optional) Show the estimate of the true error of the optimized SVM classifier (if you did the optional part of the work) and discuss whether it was worth doing this optimization. If you did not do the optional part leave this answer blank.
 R10:
+Approximate Normal Test
+Classifier       Best parameters              test error %                    confidence interval
+SVM (gamma&C)  (gamma=2.076896551724138,      0.0408981555733761      (37.2920180944453, 64.7079819055547)
+                    C=0.06723357536499334)
+
+The test error for the optimized SVM was only slightly lower (less than 0.004%) than the one for SVM (gamma). 
+Therefore, given the increase in computational cost for training the 2 parameters only to get a small difference in the estimation of the true error makes the optimization not worth doing.
 

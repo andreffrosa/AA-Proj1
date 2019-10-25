@@ -1,0 +1,164 @@
+
+Para c_values = np.linspace(0.01,100,30):
+
+best_gamma 0.6000000000000001 best_C 37.93724137931034
+
+Approximate Normal Test
+Classifier       train error %           test error %                    confidence_interval
+Naiive Bayes     0.05698234349919743     0.06495589414595028     (63.942529484095175, 98.05747051590482)
+Gaussian NB      0.09069020866773676     0.0946271050521251      (97.74133517328086, 138.25866482671913)
+SVM (gamma)      0.030497592295345103    0.04170008019246191     (38.16406640155796, 65.83593359844204)
+SVM (gamma&C)    0.021669341894060994    0.042502004811547714    (39.037507822356865, 66.96249217764314)
+
+McNemar Test
+classifier1 vs classifier2 = value       ( perform_identically )
+Naiive Bayes vs Gaussian NB = 20.571428571428573  ( False )
+Naiive Bayes vs SVM (gamma) = 13.75438596491228  ( False )
+Naiive Bayes vs SVM (gamma&C) = 10.720588235294118  ( False )
+Gaussian NB vs SVM (gamma) = 40.625  ( False )
+Gaussian NB vs SVM (gamma&C) = 35.61739130434783  ( False )
+SVM (gamma) vs SVM (gamma&C) = 0.0  ( True )
+
+
+c_iterations = 50
+c_values = np.linspace(0.01,100,c_iterations)
+def calc_C(index):
+    return c_values[index]
+
+gamma_iterations = 50
+gamma_values = np.linspace(0.01,100,gamma_iterations)
+def calc_gamma2(index):
+    return gamma_values[index]
+
+
+best_gamma 2.050612244897959 best_C 2.050612244897959
+
+Approximate Normal Test
+Classifier       train error %           test error %                    confidence_interval
+Naiive Bayes     0.05537720706260032     0.0673616680032077      (66.6518828986917, 101.3481171013083)
+Gaussian NB      0.09069020866773676     0.0946271050521251      (97.74133517328086, 138.25866482671913)
+SVM (gamma)      0.021669341894060994    0.040096230954290296    (36.42140228306693, 63.57859771693307)
+SVM (gamma&C)    0.020064205457463884    0.042502004811547714    (39.037507822356865, 66.96249217764314)
+
+McNemar Test
+classifier1 vs classifier2 = value       ( perform_identically )
+Naiive Bayes vs Gaussian NB = 17.015625  ( False )
+Naiive Bayes vs SVM (gamma) = 16.5  ( False )
+Naiive Bayes vs SVM (gamma&C) = 13.432835820895523  ( False )
+Gaussian NB vs SVM (gamma) = 41.56481481481482  ( False )
+Gaussian NB vs SVM (gamma&C) = 37.57798165137615  ( False )
+SVM (gamma) vs SVM (gamma&C) = 1.3333333333333333  ( True )
+
+
+best_gamma 0.8 best_C 6.555172413793104
+
+Approximate Normal Test
+Classifier       train error %           test error %                    confidence_interval
+Naiive Bayes     0.05698234349919743     0.06655974338412189     (65.74804244571963, 100.25195755428037)
+Gaussian NB      0.09069020866773676     0.0946271050521251      (97.74133517328086, 138.25866482671913)
+SVM (gamma)      0.030497592295345103    0.04490777866880513     (41.665823792833734, 70.33417620716627)
+SVM (gamma&C)    0.021669341894060994    0.040096230954290296    (36.42140228306693, 63.57859771693307)
+
+McNemar Test
+classifier1 vs classifier2 = value       ( perform_identically )
+Naiive Bayes vs Gaussian NB = 18.349206349206348  ( False )
+Naiive Bayes vs SVM (gamma) = 11.859649122807017  ( False )
+Naiive Bayes vs SVM (gamma&C) = 15.753846153846155  ( False )
+Gaussian NB vs SVM (gamma) = 36.48039215686274  ( False )
+Gaussian NB vs SVM (gamma&C) = 40.080357142857146  ( False )
+SVM (gamma) vs SVM (gamma&C) = 1.1363636363636365  ( True )
+
+
+
+c_iterations = 30
+c_values = np.linspace(0.01,100,c_iterations)
+
+best_gamma 0.4 best_C 34.48931034482758
+
+Approximate Normal Test
+Classifier       train error %           test error %                    confidence_interval
+Naiive Bayes     0.056179775280898875    0.06655974338412189     (65.74804244571963, 100.25195755428037)
+Gaussian NB      0.09069020866773676     0.0946271050521251      (97.74133517328086, 138.25866482671913)
+SVM (gamma)      0.02086677367576244     0.0408981555733761      (37.2920180944453, 64.7079819055547)
+SVM (gamma&C)    0.021669341894060994    0.042502004811547714    (39.037507822356865, 66.96249217764314)
+
+McNemar Test
+classifier1 vs classifier2 = value       ( perform_identically )
+Naiive Bayes vs Gaussian NB = 18.349206349206348  ( False )
+Naiive Bayes vs SVM (gamma) = 15.015625  ( False )
+Naiive Bayes vs SVM (gamma&C) = 12.742424242424242  ( False )
+Gaussian NB vs SVM (gamma) = 39.96330275229358  ( False )
+Gaussian NB vs SVM (gamma&C) = 36.24778761061947  ( False )
+SVM (gamma) vs SVM (gamma&C) = 0.1  ( True )
+
+
+
+
+
+
+
+
+
+best_gamma 0.4520353656360243 best_C 52.98316906283707
+
+Approximate Normal Test
+Classifier       train error %           test error %                    confidence_interval
+Naiive Bayes     0.06179775280898876     0.05934242181234964     (57.64736622818636, 90.35263377181364)
+Gaussian NB      0.09069020866773676     0.0946271050521251      (97.74133517328086, 138.25866482671913)
+SVM (gamma)      0.030497592295345103    0.042502004811547714    (39.037507822356865, 66.96249217764314)
+SVM (gamma&C)    0.021669341894060994    0.044105854049719326    (40.78842154053453, 69.21157845946547)
+
+McNemar Test
+classifier1 vs classifier2 = value       ( perform_identically )
+Naiive Bayes vs Gaussian NB = 35.55769230769231  ( False )
+Naiive Bayes vs SVM (gamma) = 7.017543859649122  ( False )
+Naiive Bayes vs SVM (gamma&C) = 4.835820895522388  ( False )
+Gaussian NB vs SVM (gamma) = 39.00952380952381  ( False )
+Gaussian NB vs SVM (gamma&C) = 33.426086956521736  ( False )
+SVM (gamma) vs SVM (gamma&C) = 0.05  ( True )
+
+
+
+gamma_iterations = 30
+gamma_values = np.linspace(0.01,10,gamma_iterations) 
+c_iterations = 30
+#c_values = np.linspace(0.01,100,c_iterations) 
+c_values = np.logspace(-2,2,c_iterations, base=10.0)
+
+best_gamma 8.277586206896553 best_C 0.2395026619987486
+
+Approximate Normal Test
+Classifier       train error %           test error %                    confidence_interval
+Naiive Bayes     0.056179775280898875    0.06655974338412189     (65.74804244571963, 100.25195755428037)
+Gaussian NB      0.09069020866773676     0.0946271050521251      (97.74133517328086, 138.25866482671913)
+SVM (gamma)      0.020064205457463884    0.040096230954290296    (36.42140228306693, 63.57859771693307)
+SVM (gamma&C)    0.020064205457463884    0.03929430633520449     (35.55226031459743, 62.44773968540257)
+
+McNemar Test
+classifier1 vs classifier2 = value       ( perform_identically )
+Naiive Bayes vs Gaussian NB = 18.349206349206348  ( False )
+Naiive Bayes vs SVM (gamma) = 15.753846153846155  ( False )
+Naiive Bayes vs SVM (gamma&C) = 17.015625  ( False )
+Gaussian NB vs SVM (gamma) = 40.80909090909091  ( False )
+Gaussian NB vs SVM (gamma&C) = 42.42201834862385  ( False )
+SVM (gamma) vs SVM (gamma&C) = 0.0  ( True )
+
+
+
+best_gamma 2.076896551724138 best_C 0.06723357536499334
+
+Approximate Normal Test
+Classifier       train error %           test error %                    confidence_interval
+Naiive Bayes     0.05698234349919743     0.06655974338412189     (65.74804244571963, 100.25195755428037)
+Gaussian NB      0.09069020866773676     0.0946271050521251      (97.74133517328086, 138.25866482671913)
+SVM (gamma)      0.030497592295345103    0.04490777866880513     (41.665823792833734, 70.33417620716627)
+SVM (gamma&C)    0.028892455858747994    0.0408981555733761      (37.2920180944453, 64.7079819055547)
+
+McNemar Test
+classifier1 vs classifier2 = value       ( perform_identically )
+Naiive Bayes vs Gaussian NB = 18.349206349206348  ( False )
+Naiive Bayes vs SVM (gamma) = 11.859649122807017  ( False )
+Naiive Bayes vs SVM (gamma&C) = 19.22  ( False )
+Gaussian NB vs SVM (gamma) = 36.48039215686274  ( False )
+Gaussian NB vs SVM (gamma&C) = 45.85263157894737  ( False )
+SVM (gamma) vs SVM (gamma&C) = 1.2307692307692308  ( True )
